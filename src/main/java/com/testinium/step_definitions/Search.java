@@ -2,6 +2,7 @@ package com.testinium.step_definitions;
 
 
 import com.github.javafaker.Bool;
+import com.testinium.pages.PageLoad;
 import com.testinium.utilities.BrowserUtils;
 import com.testinium.utilities.ConfigurationReader;
 import com.testinium.utilities.Driver;
@@ -24,7 +25,7 @@ import static org.apache.poi.ss.formula.functions.BooleanFunction.OR;
 
 
 public class Search {
-
+PageLoad search = new PageLoad();
     String path = "Book1.xlsx";
     FileInputStream fileInputStream = new FileInputStream(path);
     XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
@@ -65,7 +66,6 @@ public class Search {
 
         BrowserUtils.waitFor(2);
         Driver.getDriver().findElement(By.xpath("//input[@placeholder]")).sendKeys(firstSearchWord);
-        Driver.getDriver().findElement(By.xpath("//input[@placeholder]")).clear();
         BrowserUtils.waitFor(2);
 
     }
@@ -100,7 +100,7 @@ public class Search {
         Random random = new Random();
         int randomProduct = random.nextInt(maxProducts);
         productList.get(randomProduct).click();
-        BrowserUtils.waitFor(4);
+        BrowserUtils.waitFor(2);
     }
 
 
